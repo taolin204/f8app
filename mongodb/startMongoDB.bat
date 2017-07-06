@@ -1,0 +1,1 @@
+"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --storageEngine wiredTiger --dbpath C:\Dev\Libraries\MwiSource\IOTs\trunk\Development\F8App\mongodb\db
