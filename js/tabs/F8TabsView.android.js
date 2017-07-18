@@ -36,7 +36,9 @@ var View = require('View');
 var StyleSheet = require('StyleSheet');
 var TouchableOpacity = require('TouchableOpacity');
 var Image = require('Image');
-var { Text } = require('F8Text');
+var {
+  Text
+} = require('F8Text');
 var MenuItem = require('./MenuItem');
 var LoginButton = require('../common/LoginButton');
 var ProfilePicture = require('../common/ProfilePicture');
@@ -44,10 +46,17 @@ var GeneralScheduleView = require('./schedule/GeneralScheduleView');
 var MyScheduleView = require('./schedule/MyScheduleView');
 var unseenNotificationsCount = require('./notifications/unseenNotificationsCount');
 
-var { switchTab, logOutWithPrompt } = require('../actions');
-var { connect } = require('react-redux');
+var {
+  switchTab,
+  logOutWithPrompt
+} = require('../actions');
+var {
+  connect
+} = require('react-redux');
 
-import type {Tab} from '../reducers/navigation';
+import type {
+  Tab
+} from '../reducers/navigation';
 
 class F8TabsView extends React.Component {
   props: {
@@ -84,16 +93,14 @@ class F8TabsView extends React.Component {
 
   openProfileSettings() {
     this.refs.drawer.closeDrawer();
-    this.props.navigator.push({shareSettings: true});
+    this.props.navigator.push({
+      shareSettings: true
+    });
   }
 
   renderNavigationView() {
-    var scheduleIcon = this.props.day === 1
-      ? require('./schedule/img/schedule-icon-1.png')
-      : require('./schedule/img/schedule-icon-2.png');
-    var scheduleIconSelected = this.props.day === 1
-      ? require('./schedule/img/schedule-icon-1-active.png')
-      : require('./schedule/img/schedule-icon-2-active.png');
+    var scheduleIcon = this.props.day === 1 ? require('./schedule/img/schedule-icon-1.png') : require('./schedule/img/schedule-icon-2.png');
+    var scheduleIconSelected = this.props.day === 1 ? require('./schedule/img/schedule-icon-1-active.png') : require('./schedule/img/schedule-icon-2-active.png');
     var accountItem, myF8Item, loginItem;
 
     if (this.props.user.isLoggedIn) {

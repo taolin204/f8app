@@ -28,7 +28,7 @@
 var React = require('React');
 var AppState = require('AppState');
 var LoginScreen = require('./login/LoginScreen');
-var PushNotificationsController = require('./PushNotificationsController');
+//var PushNotificationsController = require('./PushNotificationsController');
 var StyleSheet = require('StyleSheet');
 var F8Navigator = require('F8Navigator');
 var CodePush = require('react-native-code-push');
@@ -42,10 +42,16 @@ var {
   loadFriendsSchedules,
   loadSurveys,
 } = require('./actions');
-var { updateInstallation } = require('./actions/installation');
-var { connect } = require('react-redux');
+var {
+  updateInstallation
+} = require('./actions/installation');
+var {
+  connect
+} = require('react-redux');
 
-var { version } = require('./env.js');
+var {
+  version
+} = require('./env.js');
 
 var F8App = React.createClass({
   componentDidMount: function() {
@@ -59,8 +65,12 @@ var F8App = React.createClass({
     this.props.dispatch(loadFriendsSchedules());
     this.props.dispatch(loadSurveys());
 
-    updateInstallation({version});
-    CodePush.sync({installMode: CodePush.InstallMode.ON_NEXT_RESUME});
+    updateInstallation({
+      version
+    });
+    CodePush.sync({
+      installMode: CodePush.InstallMode.ON_NEXT_RESUME
+    });
   },
 
   componentWillUnmount: function() {
@@ -72,14 +82,16 @@ var F8App = React.createClass({
       this.props.dispatch(loadSessions());
       this.props.dispatch(loadNotifications());
       this.props.dispatch(loadSurveys());
-      CodePush.sync({installMode: CodePush.InstallMode.ON_NEXT_RESUME});
+      CodePush.sync({
+        installMode: CodePush.InstallMode.ON_NEXT_RESUME
+      });
     }
   },
 
   render: function() {
-    if (!this.props.isLoggedIn) {
-      return <LoginScreen />;
-    }
+    // if (!this.props.isLoggedIn) {
+    //   return <LoginScreen />;
+    // }
     return (
       <View style={styles.container}>
         <StatusBar
@@ -88,7 +100,6 @@ var F8App = React.createClass({
           barStyle="light-content"
          />
         <F8Navigator />
-        <PushNotificationsController />
       </View>
     );
   },
